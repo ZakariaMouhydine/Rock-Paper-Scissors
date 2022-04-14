@@ -138,18 +138,25 @@ Player must enter rock paper or scissors
 computer
 */
 
-const computerChoice = ['rock', 'paper', 'scissors']
-const random = Math.trunc(Math.random() * 3)
-const computer = computerChoice[random]
-let playing = true
-console.log(computer)
-// scores
-let playerScore = 0
-let computerScore = 0
-const rockBtn = document.querySelector('.rock');
-const paperBtn = document.querySelector('.paper');
-const scissorBtn = document.querySelector('.scissor');
-let player = ''
+// const computerChoice = ['rock', 'paper', 'scissors']
+// const random = Math.trunc(Math.random() * 3)
+// const computer = computerChoice[random]
+// let playing = true
+// console.log(computer)
+
+
+// // scores
+// let playerScore = 0
+// let computerScore = 0
+// const rockBtn = document.querySelector('.rock');
+// const paperBtn = document.querySelector('.paper');
+// const scissorBtn = document.querySelector('.scissor');
+// let player = ''
+
+
+
+
+
 // const winner = function(){
 // 	let player = prompt('Rock, paper or scissors')
 // 	player = player.toLowerCase()
@@ -165,10 +172,104 @@ let player = ''
 
 // winner()
 
-rockBtn.addEventListener('click', function(){
-	player = 'rock'
-	if(playerScore<= 5 && computerScore <= 5)
-	if(player === computer){
+
+// rockBtn.addEventListener('click', function(){
+// 	player = 'rock'
+// 	if(playerScore<= 5 && computerScore <= 5)
+// 	if(player === computer){
+
+// 	}
+// })
+
+/*
+function of program: 
+computer must be able to pick rock paper or scissors:
+array
+
+computer point variable must be made
+player point var must be made
+every time a move is made move-1
+
+logic:
+player == rock, computer === paper computer wins
+1+ 
+*/ 
+
+// Choices
+const computerChoices = ['rock', 'paper', 'scissor']
+// Elements
+const move = document.querySelector('.move'); 
+const movesLeftEl = document.querySelector('.movesleft')
+const pCountEl = document.querySelector('.p-count')
+const cCountEl = document.querySelector('.c-count')
+const rockBtn = document.querySelector('.rock')
+const paperBtn = document.querySelector('.paper')
+const scissorBtn = document.querySelector('.scissor')
+
+// cCountEl.textContent 
+
+// score
+let pCount = 0 
+let cCount = 0 
+let movesLeft = 10
+let playing = true
+let player = ''
+
+		
+const winner = function (){
+	if(playing === true){
+		const computer = computerChoices[Math.trunc(Math.random()* 3)]
+		console.log(computer) 
+		movesLeft -= 1
+		movesLeftEl.textContent = movesLeft
+		if(player === computer){
+			move.textContent = 'It is a tie!!!'
+		} else if(player === 'rock'){
+			pCount += computer === 'paper' ? 0 : 1
+			cCount += computer === 'paper' ? 1 : 0
+			pCountEl.textContent = pCount
+			cCountEl.textContent = cCount
+			move.textContent = computer === 'paper' ? 'computer wins this round' : 'player wins this round'
+		} else if(player === 'paper'){
+			pCount += computer === 'scissor' ? 0 : 1
+			cCount += computer === 'scissor' ? 1 : 0
+			pCountEl.textContent = pCount
+			cCountEl.textContent = cCount
+			move.textContent = computer === 'scissor' ? 'computer wins this round' : 'player wins this round'
+		} else if(player === 'scissor'){
+			const zak = 'zak'
+			console.log(zak);
+			pCount += computer === 'rock' ? 0 : 1
+			cCount += computer === 'rock' ? 1 : 0
+			pCountEl.textContent = pCount
+			cCountEl.textContent = cCount
+			move.textContent = computer === 'rock' ? 'computer wins this round' : 'player wins this round'
+		} 
+
+		
+
 
 	}
+	// console.log(zak);
+
+}
+
+// console.log(zak);
+const gameWin = function(){
+
+}
+
+rockBtn.addEventListener('click', function(){
+	player = 'rock'
+	winner()
+})
+
+scissorBtn.addEventListener('click', function(){
+	player = 'scissor'
+	winner()
+})
+
+paperBtn.addEventListener('click', function(){
+	player = 'paper'
+	winner()
 })
