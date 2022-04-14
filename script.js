@@ -215,14 +215,17 @@ let cCount = 0
 let movesLeft = 10
 let playing = true
 let player = ''
+let won = false
 
-		
 const winner = function (){
 	if(playing === true){
+		// won is needed as a substitute for if(pcount < 5 && ccount < 5)
+		// won = pCount < 5 && cCount < 5 ? false : true
 		const computer = computerChoices[Math.trunc(Math.random()* 3)]
 		console.log(computer) 
 		movesLeft -= 1
 		movesLeftEl.textContent = movesLeft
+	
 		if(player === computer){
 			move.textContent = 'It is a tie!!!'
 		} else if(player === 'rock'){
@@ -243,19 +246,18 @@ const winner = function (){
 			pCountEl.textContent = pCount
 			cCountEl.textContent = cCount
 			move.textContent = computer === 'rock' ? 'computer wins this round' : 'player wins this round'
-		} 
-
-		
-
-
+		}
 	}
 	
 
 }
 
 const gameWin = function(){
+	pCountEl.textContent = pCount
+	cCountEl.textContent = cCount
+	move.textContent = pCount > cCount ? 'You win the game!!!!' : 'The computer won the game... You should be ashamed😑'
 	playing = false
-	move.textContent = cCount < pCount ? 'You win the game!!!' : 'The computer wins 😑 '
+	
 }
 
 rockBtn.addEventListener('click', function(){
@@ -272,3 +274,17 @@ paperBtn.addEventListener('click', function(){
 	player = 'paper'
 	winner()
 })
+
+// needed to set conditions for when game is won
+// if(won || movesLeft === 0){
+//     if(pCount === cCount){
+//  // This if statement will occur if the game ends in a tie
+// 	   move.textContent = 'The game ends in a tie 😑'
+// 	   playing = false
+//     }else{	
+//     won && pCount < cCount ? cCount+=1 : pCount +=1
+// //  if the won variable was true and the player had more points than the computer, a point will be added to the player, if not, the computer gets the point 
+//     console.log(pCount, cCount);
+//     gameWin()	
+// }
+//  }
