@@ -237,8 +237,6 @@ const winner = function (){
 			cCountEl.textContent = cCount
 			move.textContent = computer === 'scissor' ? 'computer wins this round' : 'player wins this round'
 		} else if(player === 'scissor'){
-			const zak = 'zak'
-			console.log(zak);
 			pCount += computer === 'rock' ? 0 : 1
 			cCount += computer === 'rock' ? 1 : 0
 			pCountEl.textContent = pCount
@@ -250,13 +248,13 @@ const winner = function (){
 
 
 	}
-	// console.log(zak);
+	
 
 }
 
-// console.log(zak);
 const gameWin = function(){
-
+	playing = false
+	// move.textContent = `${}` do this tmr winner comment
 }
 
 rockBtn.addEventListener('click', function(){
