@@ -197,6 +197,7 @@ player == rock, computer === paper computer wins
 
 // Choices
 const computerChoices = ['rock', 'paper', 'scissor']
+
 // Elements
 const move = document.querySelector('.move'); 
 const movesLeftEl = document.querySelector('.movesleft')
@@ -254,7 +255,7 @@ const winner = function (){
 
 const gameWin = function(){
 	playing = false
-	// move.textContent = `${}` do this tmr winner comment
+	move.textContent = cCount < pCount ? 'You win the game!!!' : 'The computer wins 😑 '
 }
 
 rockBtn.addEventListener('click', function(){
