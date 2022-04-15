@@ -25,13 +25,22 @@ let won = false
 const winner = function (){
 	if(playing === true){
 		// won is needed as a substitute for if(pcount < 5 && ccount < 5)
-		// won = pCount < 5 && cCount < 5 ? false : true
+		won = pCount < 5 && cCount < 5 ? false : true
 		const computer = computerChoices[Math.trunc(Math.random()* 3)]
 		console.log(computer) 
 		movesLeft -= 1
 		movesLeftEl.textContent = movesLeft
-	
-		if(player === computer){
+		if(won || movesLeft === 0){
+			if(pCount === cCount){
+				move.textContent = 'The game has ended in a tie...'
+				playing = false
+			}else{
+				won && pCount < cCount ? cCount+=1 : pCount +=1
+				console.log(pCount,cCount);
+				gameWin()
+			}
+			
+		}else if(player === computer){
 			move.textContent = 'It is a tie!!!'
 		} else if(player === 'rock'){
 			pCount += computer === 'paper' ? 0 : 1
